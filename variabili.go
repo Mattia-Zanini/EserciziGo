@@ -95,4 +95,25 @@ func main() {
 	// |	OR
 	// ^	OR esclusiva
 	// &^	AND NOT
+
+	// Come primitiva esistono anche i numeri complessi: complex64 (float32 per la parte reale e
+	// float 32 per la parte immaginaria), complex128
+	var c complex64 = 1 + 2i
+	fmt.Printf("%v, %T\n", c, c)
+	fmt.Printf("parte reale: %v, %T\n", real(c), real(c))
+	fmt.Printf("parte immaginaria: %v, %T\n", imag(c), imag(c))
+	c = complex(3, 5) // c = 3 + 5i
+
+	// I caratteri delle stringhe sono immutabili, inoltre rappresenta ogni carattere UTF-8
+	str := "Palle 3"
+	// str[4] = "a" // Dà errore di compilazione
+	fmt.Printf("%v, %T\n", str, str)
+
+	// Posso convertire le stringhe in array di bytes
+	bs := []byte(str)
+	fmt.Printf("%v, %T\n", bs, bs)
+
+	// Questa è una 'runa' e rappresenta un carattere in UTF-32 (rappresentabile con int32)
+	var r rune = 'a'
+	fmt.Printf("%v, %T\n", r, r)
 }
