@@ -105,7 +105,7 @@ func main() {
 	c = complex(3, 5) // c = 3 + 5i
 
 	// I caratteri delle stringhe sono immutabili, inoltre rappresenta ogni carattere UTF-8
-	str := "Palle 3"
+	str := "sdrogo"
 	// str[4] = "a" // Dà errore di compilazione
 	fmt.Printf("%v, %T\n", str, str)
 
