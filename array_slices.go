@@ -50,4 +50,46 @@ func main() {
 	d[0] = 7
 	fmt.Printf("c: %v\n", c)
 	fmt.Printf("d: %v\n", d)
+
+	e := []int{6, 21, 19, 52, 0, 8, -3}
+	f := e[:]   // slice of all elements
+	g := e[3:]  // slice dal quarto elemento fino alla fine (quarto elemento incluso). [52 0 8 -3]
+	h := e[:6]  // slice dei primi 6 elementi (escluso e[6]). [6 21 19 52 0 8]
+	i := e[3:6] // slice composta dal quarto, quinto e sesto elemento (escluso e[6]). [52 0 8]
+	fmt.Println(e)
+	fmt.Println(f)
+	fmt.Println(g)
+	fmt.Println(h)
+	fmt.Println(i)
+
+	// Posso creare uno slice anche da un array
+	e2 := [...]int{6, 21, 19, 52, 0, 8, -3} // e2 è un array
+	f2 := e2[:]                             // f2 è uno slice
+	fmt.Printf("e2: %v, %T\n", e2, e2)
+	fmt.Printf("f2: %v, %T\n", f2, f2)
+
+	// Si può creare uno slice tramite il metodo make() che accetta 2 o 3 operandi
+	v1 := make([]int, 3)
+	fmt.Printf("v1: %v, %T\n", v1, v1)
+	v2 := make([]int, 3, 20) // il terzo argomento è la capacità
+	fmt.Printf("v2: %v, %T, Lunghezza: %v, Capacità: %v\n", v2, v2, len(v2), cap(v2))
+	// Solo gli slice hanno una capacità perchè sono array di dimensione variabile,
+	// mentre gli array NON hanno una capacità, hanno solo la lunghezza
+
+	v3 := []int{}
+	fmt.Printf("v3: %v, %T, Lunghezza: %v, Capacità: %v\n", v3, v3, len(v3), cap(v3))
+	v3 = append(v3, 2) // in questo modo aggiungo alla fine dello slice un elemento, tipo il metodo push_back dei vettori su C++
+	fmt.Printf("v3: %v, %T, Lunghezza: %v, Capacità: %v\n", v3, v3, len(v3), cap(v3))
+	v3 = append(v3, 3, 6, -1, 0) // tutti gli argomenti dopo il primo rappresentano gli elementi da inserire
+	fmt.Printf("v3: %v, %T, Lunghezza: %v, Capacità: %v\n", v3, v3, len(v3), cap(v3))
+
+	// Con il metodo append si possono concatenare le slice usando l'operatore "spread"
+	v3 = append(v3, []int{1, 2, 3}...)
+	fmt.Printf("v3: %v, %T, Lunghezza: %v, Capacità: %v\n", v3, v3, len(v3), cap(v3))
+	v5 := []int{9, -6, 20, 65, 33}
+	v3 = append(v3, v5...)
+	fmt.Printf("v3: %v, %T, Lunghezza: %v, Capacità: %v\n", v3, v3, len(v3), cap(v3))
+	v3 = append([]int{-99, -98}, v3...)
+	fmt.Printf("v3: %v, %T, Lunghezza: %v, Capacità: %v\n", v3, v3, len(v3), cap(v3))
+
 }
