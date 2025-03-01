@@ -57,14 +57,42 @@ func main() {
 		fmt.Println("default case")
 	}
 
+	// Mentre i "fallthrough" sono espliciti e il fallthrough non esegue la logica dei confronti
+	// quindi è a carico del programmatore controllare se la logica del programma viene rispettata
 	v := 9
+	fmt.Printf("v: %v\n", v)
 	switch {
 	case v <= 10:
 		fmt.Println("v <= 4")
-	case v <= 20:
-		fmt.Println("v <= 7")
+		fallthrough
+	case v >= 20:
+		fmt.Println("v >= 20")
 	default:
 		fmt.Println("default case")
+	} // alla fine vengono stampati entrambi i primi due print
+
+	// In Go, interface{} (nota anche come empty interface) è un'interfaccia speciale che può
+	// contenere un valore di qualsiasi tipo. Questo è possibile perché in Go tutte le variabili
+	// implementano automaticamente un'interfaccia vuota. Poiché interface{} può contenere qualsiasi
+	// tipo, è utile per scrivere codice generico o lavorare con dati di tipo dinamico.
+	var x interface{} = 42 // x può contenere un intero
+	x = "ciao"             // ora x contiene una stringa
+	x = 3.14               // ora x contiene un float64
+	fmt.Printf("x: %v, %T\n", x, x)
+
+	// Lo switch di tipo (switch i.(type)) è una struttura che permette di controllare dinamicamente
+	// il tipo effettivo di una variabile contenuta in un'interface{}.
+	var y interface{} = 1 // i contiene un int
+	fmt.Printf("y: %v, %T\n", y, y)
+	switch y.(type) {
+	case int:
+		fmt.Println("y is an int")
+	case float64:
+		fmt.Println("y is a float64")
+	case string:
+		fmt.Println("y is string")
+	default:
+		fmt.Println("y is another type")
 	}
 
 }
