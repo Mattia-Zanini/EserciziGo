@@ -94,5 +94,62 @@ func main() {
 	default:
 		fmt.Println("y is another type")
 	}
+	///
+	///
+	///
+	///
+	for i := 0; i < 2; i++ {
+		fmt.Println(i)
+	}
 
+	// posso essere inizializzate più variabili nel for
+	for i, j := 0, 0; i < 5; i, j = i+1, j+3 { // i += 1, j += 3
+		fmt.Printf("i: %v\n", i)
+		fmt.Printf("j: %v\n", j)
+	}
+
+	g := 0
+	// il for fa solo la comparazione (codice più pulito da vedere)
+	for g < 3 { // è uguale a scrivere "for ; i < 3 ; {"
+		fmt.Println(g)
+		g++
+	}
+
+Pippo:
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 5; j++ {
+			if j > 2 {
+				// break // interrompe solo il ciclo più interno, ovvero "for j := 0; j < 5; j++ {"
+				break Pippo // in questo modo termina tutto il loop esterno che si trova su di Pippo
+			}
+			fmt.Printf("i: %v, j: %v\n", i, j)
+		}
+	}
+
+	s := []int{6, 3, -8}
+	fmt.Printf("s: %v\n", s)
+	// For loop in range, funziano anche per gli array
+	for k, v := range s { // k = chiave, v = valore
+		fmt.Printf("s[%v]: %v\n", k, v)
+	}
+
+	// posso iterare anche le mappe
+	for k, v := range statePopulations {
+		fmt.Printf("s[\"%v\"]: %v\n", k, v)
+	}
+
+	str := "Hello Go!"
+	// anche le stringhe
+	for k, v := range str {
+		fmt.Printf("str[%v]: %v\n", k, string(v))
+	}
+
+	// in questo modo prendo solo i VALORI
+	for _, v := range statePopulations {
+		fmt.Printf("%v\n", v)
+	}
+	// in questo modo prendo solo le CHIAVI
+	for k := range statePopulations {
+		fmt.Printf("%v\n", k)
+	}
 }
