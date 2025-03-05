@@ -14,7 +14,7 @@
 11) interfaces.go
 12) interfaces_2.go
 13) go_routine.md
-14) go-routine.go  &  Esempio race 2.md
+14) go-routine.go & Esempio race 2.md
 15) go_max_proc.go
 16) go concurrency best practices.md
 17) channels.go
