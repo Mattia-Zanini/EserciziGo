@@ -1,5 +1,26 @@
 # Go
 
+### Ordine dei file da seguire:
+1) variabili.go
+2) costanti.go
+3) array_and_slices.go
+4) maps.go
+5) structs.go
+6) statements_loops.go
+7) defer_panic_recover.go
+8) defer_panic.md
+9) pointers.go
+10) functions.go
+11) interfaces.go
+12) interfaces_2.go
+13) go_routine.md
+14) go-routine.go & Esempio race 2.md
+15) go_max_proc.go
+16) go concurrency best practices.md
+17) channels.go
+18) select_1.go
+19) select_2.go
+
 ### Introduzione
 Go è un linguaggio di programmazione forte e staticamente tipizzato, simile a Java e C++, in cui il tipo di una variabile non può cambiare nel tempo e deve essere definito in fase di compilazione. Pur offrendo alcuni meccanismi per bypassare il sistema di tipi, nella maggior parte dei casi il linguaggio resta rigoroso e sicuro. È stato progettato per essere semplice, con una sintassi che riduce la verbosità tipica di altri linguaggi fortemente tipizzati, grazie anche a un compilatore che deduce molti dettagli per l'utente.
 
