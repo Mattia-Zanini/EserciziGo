@@ -127,6 +127,17 @@ func main() {
 	}
 	globalWG.Wait()
 
+	//
+
+	//In questo codice, i lock sono stati spostati all'esterno delle goroutine, quindi vengono
+	// eseguiti prima che ogni goroutine inizi e vengono sbloccati solo quando l'operazione asincrona
+	// è terminata. In questo modo, il programma stampa correttamente i numeri da 0 a 9 ogni volta
+	// che viene eseguito.
+
+	// Tuttavia, il problema è che l'uso eccessivo dei mutex ha eliminato del tutto i benefici della
+	// concorrenza e del parallelismo. Poiché ogni operazione è bloccata in modo sequenziale, il
+	// codice non sfrutta davvero le goroutine e probabilmente è più lento di una versione
+	// senza concorrenza.
 	fmt.Println("\nEsampio race 3\n")
 	counter = 0
 	globalWG = sync.WaitGroup{}
