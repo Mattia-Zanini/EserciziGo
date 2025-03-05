@@ -12,6 +12,11 @@ func sayHello() {
 
 var counter int = 0
 var globalWG = sync.WaitGroup{}
+
+// Un RWMutex (Read-Write Mutex) è una variante di Mutex che:
+// - Permette a più lettori di accedere contemporaneamente alla risorsa.
+// - Impedisce la scrittura quando ci sono lettori attivi.
+// - Garantisce che quando un thread scrive, nessun altro possa leggere o scrivere fino alla fine della modifica.
 var m = sync.RWMutex{}
 
 func main() {
@@ -113,15 +118,30 @@ func main() {
 
 	// Leggi "Esempio race 2.md"
 	fmt.Println("\nEsampio race 2\n")
+	counter = 0
 	globalWG = sync.WaitGroup{}
 	for i := 0; i < 10; i++ {
 		globalWG.Add(2)
-		go sayHello2()
-		go Increment()
+		go sayHello3()
+		go Increment2()
+	}
+	globalWG.Wait()
+
+	fmt.Println("\nEsampio race 3\n")
+	counter = 0
+	globalWG = sync.WaitGroup{}
+	m = sync.RWMutex{}
+	for i := 0; i < 10; i++ {
+		globalWG.Add(2)
+		m.RLock()
+		go sayHello4()
+		m.Lock()
+		go Increment3()
 	}
 	globalWG.Wait()
 }
 
+// esempio race
 func sayHello2() {
 	fmt.Printf("Hello #%v\n", counter)
 	globalWG.Done()
@@ -131,6 +151,7 @@ func Increment() {
 	globalWG.Done()
 }
 
+// esempio race 2
 func sayHello3() {
 	m.RLock()
 	fmt.Printf("Hello #%v\n", counter)
@@ -139,6 +160,18 @@ func sayHello3() {
 }
 func Increment2() {
 	m.Lock()
+	counter++
+	m.Unlock()
+	globalWG.Done()
+}
+
+// esempio race 3
+func sayHello4() {
+	fmt.Printf("Hello #%v\n", counter)
+	m.RUnlock()
+	globalWG.Done()
+}
+func Increment3() {
 	counter++
 	m.Unlock()
 	globalWG.Done()

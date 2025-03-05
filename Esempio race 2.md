@@ -48,3 +48,5 @@ func Increment() {
 
 ### **Problema rimasto**
 Anche se il mutex impedisce modifiche concorrenti alla variabile `counter`, il codice presenta ancora un comportamento **non del tutto sincronizzato**, perché la lettura e l’incremento non sono coordinati nel ciclo principale. Di conseguenza, i valori stampati possono risultare fuori ordine o incongruenti, anche se il programma evita errori di accesso concorrente.
+
+Il problema è che le goroutine accedono a counter senza garantire che l'incremento avvenga tra due letture consecutive, causando stampe duplicate. La soluzione è bloccare il mutex prima di avviare le goroutine, assicurando che Increment() aggiorni counter prima che sayHello() lo legga di nuovo. In questo modo, si evita la concorrenza imprevedibile e si garantisce un'esecuzione ordinata.
