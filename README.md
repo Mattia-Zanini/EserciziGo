@@ -1,5 +1,8 @@
 # Go
 
+#### Premessa
+Questa non sarà la miglior guida per Go però ho cercato di fare del mio meglio
+
 ### Ordine dei file da seguire:
 1) variabili.go
 2) costanti.go
