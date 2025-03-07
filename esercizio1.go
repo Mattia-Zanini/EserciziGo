@@ -10,13 +10,13 @@ func main() {
 	ch := make(chan int)
 
 	stringa := "aaaaaaaaaaaaabbbbbbbbcccccddddccccccfff"
-	var carattere rune = 'a'
-	var counter int = 0
+	carattere := 'a'
+	counter := 0
 
 	wg.Add(1)
 	go func(s string, r rune, ch chan<- int) {
 		count := 0
-		for i := 0; i < len(s); i++ {
+		for i := range s {
 			if rune(s[i]) == r {
 				count++
 			}
