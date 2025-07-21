@@ -63,7 +63,7 @@ func main() {
 	fmt.Printf("v: %v\n", v)
 	switch {
 	case v <= 10:
-		fmt.Println("v <= 4")
+		fmt.Println("v <= 10")
 		fallthrough
 	case v >= 20:
 		fmt.Println("v >= 20")
@@ -115,6 +115,10 @@ func main() {
 		g++
 	}
 
+	// Pippo è un'etichetta (label)
+	// Le etichette in Go vengono utilizzate per identificare un'istruzione, in questo caso il ciclo for esterno
+	// L'istruzione break Pippo all'interno del ciclo annidato serve a interrompere l'esecuzione del ciclo
+	// etichettato con Pippo (quello esterno), invece del solo ciclo più interno in cui si trova
 Pippo:
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 5; j++ {

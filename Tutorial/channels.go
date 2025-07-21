@@ -9,7 +9,10 @@ var wg = sync.WaitGroup{}
 
 func main() {
 	// l'unico modo per creare un channel è utilizzando la funzione make()
-	ch := make(chan int) // i channel sono fortemente tipizzati e quindi posso inviare/ricevere dati SOLO del tipo per cui ho creato il channel
+
+	// i channel sono fortemente tipizzati e quindi posso inviare/ricevere
+	// dati SOLO del tipo per cui ho creato il channel
+	ch := make(chan int)
 	wg.Add(2)
 	// Receiving goroutine
 	go func() {
@@ -80,7 +83,7 @@ func main() {
 	// il ruolo di ogni Go routine. Questo approccio migliora la chiarezza e la sicurezza del codice,
 	// evitando errori come l'invio o la ricezione di dati in modo improprio.
 
-	//Il vantaggio principale è la chiarezza: separando i ruoli di mittente e destinatario, il flusso
+	// Il vantaggio principale è la chiarezza: separando i ruoli di mittente e destinatario, il flusso
 	// di dati diventa più intuitivo e meno soggetto a errori. Inoltre, il compilatore di Go gestisce
 	// in modo polimorfico i channel: un channel bidirezionale può essere passato come argomento a una
 	// funzione che accetta un channel unidirezionale, senza bisogno di conversione esplicita. Questa
@@ -134,7 +137,7 @@ func main() {
 	// I channel buffered in Go sono progettati per gestire situazioni in cui mittente e destinatario
 	// operano a frequenze diverse. Ad esempio, in un sistema di acquisizione dati come i sismografi,
 	// i sensori potrebbero inviare dati in burst (es. una trasmissione ogni ora) per risparmiare
-	// energia. Durante questi burst, il mittente è inondato di dati, mentre il destinatario potrebbe
+	// energia. Durante questi burst, il mittente inonda il destinatario di dati, mentre il destinatario potrebbe
 	// impiegare più tempo per elaborarli. Un channel buffered consente di memorizzare temporaneamente
 	// i dati in arrivo, evitando che il mittente si blocchi mentre il destinatario li processa.
 	// Questo approccio è ideale quando uno dei due lati (mittente o destinatario) ha bisogno di più

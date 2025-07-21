@@ -111,7 +111,8 @@ func f1() {
 	fmt.Println("f1, end")
 }
 func f2() {
-	// Il defer "sposta" le funzioni, espressioni prima del ritorno della funzione (ovvero quando la funzione ritorna un valore)
+	// Il defer "sposta" le funzioni, espressioni prima del ritorno della funzione
+	// (ovvero quando la funzione ritorna un valore)
 	fmt.Println("f2, start")
 	defer fmt.Println("f2, middle")
 	fmt.Println("f2, end")
@@ -126,7 +127,7 @@ func f3() {
 func f4() {
 	a := "start"
 	defer fmt.Println(a)
-	// stamperà "start", perchè quando uso il defere su una funzione, essa prende i valori degli
+	// stamperà "start", perchè quando uso il defer su una funzione, essa prende i valori degli
 	// argomenti al momento di quando viene chiamato il defer, non quando viene eseguito
 	a = "end"
 }
